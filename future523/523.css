@@ -3,7 +3,7 @@ body {
   left: 50%;
   margin-left: -360px;
   max-width: 720px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial;
 }
 
 .title {
