@@ -30,12 +30,14 @@ var map523 = d3.select("#map_523")
 
 map23.append("text")
       .text("23-Only Stops: 2298 b/wd")
+      .attr("class", "svgtitle")
       .attr("text-anchor", "middle")
       .attr("x", 720/2.0)
       .attr("y", 15);
 
 map523.append("text")
       .text("23/323/523 Stops: 3837 b/wd")
+      .attr("class", "svgtitle")
       .attr("text-anchor", "middle")
       .attr("x", 720/2.0)
       .attr("y", 15);

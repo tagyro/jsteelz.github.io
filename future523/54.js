@@ -17,12 +17,14 @@ var line3 = d3.svg.line()
 
 map54_1.append("text")
       .text("54-Only Stops: 68 b/wd")
+      .attr("class", "svgtitle")
       .attr("text-anchor", "middle")
       .attr("x", 355/2.0)
       .attr("y", 15);
 
 map523_1.append("text")
       .text("54/523 Stops: 91 b/wd")
+      .attr("class", "svgtitle")
       .attr("text-anchor", "middle")
       .attr("x", 355/2.0)
       .attr("y", 15);
