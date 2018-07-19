@@ -60,8 +60,8 @@ var circles54_1 = map54_1.selectAll("circle")
                     .attr("stroke-width", 1)
                     .attr("stroke", "#147DC0")
                     .style("fill", "white")
-                    .on("mouseover", tip.show)
-                    .on("mouseout", tip.hide);
+                    .on("mouseover", function(d) { tip54(d); })
+                    .on("mouseout", function(d) { remove54(d); });
 
 var circles523_1 = map523_1.selectAll("circle")
                      .data(stops523_1)
@@ -73,5 +73,31 @@ var circles523_1 = map523_1.selectAll("circle")
                      .attr("stroke-width", 1)
                      .attr("stroke", "#F89738")
                      .style("fill", "white")
-                     .on("mouseover", tip.show)
-                     .on("mouseout", tip.hide);
+                     .on("mouseover", function(d) { tip523_2(d); })
+                     .on("mouseout", function(d) { remove523_2(d); });
+
+function tip54(d) {
+  map54_1.append("text")
+   .text(d[0] + ": " + d[3] + " b/wd")
+   .attr("id", "tip54")
+   .attr("text-anchor", "start")
+   .attr("x", 15)
+   .attr("y", 345);
+}
+
+function remove54() {
+  map54_1.selectAll('#tip54').remove();
+}
+
+function tip523_2(d) {
+  map523_1.append("text")
+   .text(d[0] + ": " + d[3] + " b/wd")
+   .attr("id", "tip523_2")
+   .attr("text-anchor", "start")
+   .attr("x", 15)
+   .attr("y", 345);
+}
+
+function remove523_2() {
+  map523_1.selectAll('#tip523_2').remove();
+}

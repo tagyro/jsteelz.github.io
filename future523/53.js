@@ -162,8 +162,8 @@ var circles_53 = map53.selectAll("circle")
                  .attr("stroke-width", 1)
                  .attr("stroke", "#147DC0")
                  .style("fill", "white")
-                 .on("mouseover", tip.show)
-                 .on("mouseout", tip.hide);
+                 .on("mouseover", function(d) { tip53(d); })
+                 .on("mouseout", function(d) { remove53(d); });
 
 var circles_54 = map54.selectAll("circle")
                   .data(stops54)
@@ -175,8 +175,8 @@ var circles_54 = map54.selectAll("circle")
                   .attr("stroke-width", 1)
                   .attr("stroke", "#147DC0")
                   .style("fill", "white")
-                  .on("mouseover", tip.show)
-                  .on("mouseout", tip.hide);
+                  .on("mouseover", function(d) { tip53(d); })
+                  .on("mouseout", function(d) { remove53(d); });
 
 var circles_55 = map55.selectAll("circle")
                   .data(stops55)
@@ -188,8 +188,8 @@ var circles_55 = map55.selectAll("circle")
                   .attr("stroke-width", 1)
                   .attr("stroke", "#147DC0")
                   .style("fill", "white")
-                  .on("mouseover", tip.show)
-                  .on("mouseout", tip.hide);
+                  .on("mouseover", function(d) { tip55(d); })
+                  .on("mouseout", function(d) { remove55(d); });
 
 var circles523_55 = map523_2.selectAll("circle")
                     .data(stops523)
@@ -201,5 +201,43 @@ var circles523_55 = map523_2.selectAll("circle")
                     .attr("stroke-width", 1)
                     .attr("stroke", "#F89738")
                     .style("fill", "white")
-                    .on("mouseover", tip.show)
-                    .on("mouseout", tip.hide);
+                    .on("mouseover", function(d) { tip55(d); })
+                    .on("mouseout", function(d) { remove55(d); });
+
+function tip53(d) {
+  map53.append("text")
+    .text(d[0])
+    .attr("class", "tip53")
+    .attr("text-anchor", "start")
+    .attr("x", 15)
+    .attr("y", 330);
+  map53.append("text")
+    .text(d[3] + " b/wd")
+    .attr("class", "tip53")
+    .attr("text-anchor", "start")
+    .attr("x", 15)
+    .attr("y", 345);
+}
+
+function remove53() {
+  map53.selectAll('.tip53').remove();
+}
+
+function tip55(d) {
+  map523_2.append("text")
+    .text(d[0])
+    .attr("class", "tip55")
+    .attr("text-anchor", "end")
+    .attr("x", 160)
+    .attr("y", 330);
+  map523_2.append("text")
+    .text(d[3] + " b/wd")
+    .attr("class", "tip55")
+    .attr("text-anchor", "end")
+    .attr("x", 160)
+    .attr("y", 345);
+}
+
+function remove55() {
+  map523_2.selectAll('.tip55').remove();
+}

@@ -6,16 +6,18 @@ var ridershipScale = d3.scale.linear()
   .domain([0, 916])
   .range([2, 20]);
 
-var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-80, -350])
-  .direction(function(d) {
-      if (d[1] > 25) return 'w';
-      else return 'e';
-    })
-  .html(function(d) {
-      return "<strong>" + d[0] + "<br/></strong> <span>" + d[3] + " b/wd</span>";
-    });
+function tooltip(map, d) {
+  if (map == '23') {
+    document.getElementById('stop23').style.display = 'inline';
+    document.getElementById('stop23').innerHTML = "<strong>" + d[0] + "<br/></strong> <span>" + d[3] + " b/wd</span>";
+  }
+}
+
+function clearTool(map) {
+  if (map == '23') {
+    document.getElementById('stop23').style.display = 'none';
+  }
+}
 
 //END COMMON VARIABLES FOR ALL .JS FILES
 
@@ -117,9 +119,6 @@ var stops323 = [ ['Alum Rock & King', 39.5, 0, 110],
                  ['Stevens Creek & De Anza', 2, 10.5, 116],
                  ['Stelling & Stevens Creek', 0, 10.5, 916] ];
 
-map23.call(tip);
-map523.call(tip);
-
 var circles23 = map23.selectAll("circle")
                      .data(stops23)
                    .enter()
@@ -130,8 +129,8 @@ var circles23 = map23.selectAll("circle")
                      .attr("stroke-width", 1)
                      .attr("stroke", "#EF3B39")
                      .style("fill", "white")
-                     .on("mouseover", tip.show)
-                     .on("mouseout", tip.hide);
+                     .on("mouseover", function(d) { tip23(d); })
+                     .on("mouseout", function(d) { remove23(); });
 
 var circles323 = map523.selectAll("circle")
                       .data(stops323)
@@ -143,5 +142,31 @@ var circles323 = map523.selectAll("circle")
                       .attr("stroke-width", 1)
                       .attr("stroke", "#F89738")
                       .style("fill", "white")
-                      .on("mouseover", tip.show)
-                      .on("mouseout", tip.hide);
+                      .on("mouseover", function(d) { tip523(d); })
+                      .on("mouseout", function(d) { remove523(); });
+
+function tip23(d) {
+  map23.append("text")
+    .text(d[0] + ": " + d[3] + " b/wd")
+    .attr("id", "tip23")
+    .attr("text-anchor", "end")
+    .attr("x", 705)
+    .attr("y", 225);
+}
+
+function remove23() {
+  map23.selectAll('#tip23').remove();
+}
+
+function tip523(d) {
+  map523.append("text")
+    .text(d[0] + ": " + d[3] + " b/wd")
+    .attr("id", "tip523")
+    .attr("text-anchor", "end")
+    .attr("x", 705)
+    .attr("y", 225);
+}
+
+function remove523() {
+  map523.selectAll('#tip523').remove();
+}

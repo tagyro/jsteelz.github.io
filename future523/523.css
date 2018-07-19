@@ -31,10 +31,6 @@ body {
   margin-bottom: 12.5px;
 }
 
-.d3-tip {
-  background-color: white;
-}
-
 svg {
-  font-size: 15px;
+  font-size: 12px;
 }
